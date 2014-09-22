@@ -13,5 +13,5 @@ Example files can be found at the URL given above (or for more fun, just create 
 
 Example usage:
 ```
-$ python colorizer.py example.png example_marked.png output.png --view
+$ python colorizer.py inputGrey.png inputMarked.png output.png --view
 ```

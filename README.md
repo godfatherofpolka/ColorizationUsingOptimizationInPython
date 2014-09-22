@@ -12,4 +12,6 @@ It works, but it's not very fast, there are probably various better ways to do t
 Example files can be found at the URL given above (or for more fun, just create some yourself).
 
 Example usage:
-  $ python colorizer.py example.png example_marked.png output.png --view
+```
+$ python colorizer.py example.png example_marked.png output.png --view
+```

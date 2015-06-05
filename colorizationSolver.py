@@ -1,7 +1,29 @@
+'''
+Copyright 2014 Samuel Bucheli
+
+This file is part of ColorizationUsingOptimizationInPython.
+
+ColorizationUsingOptimizationInPython is free software: you can 
+redistribute it and/or modify it under the terms of the 
+GNU General Public License as published by the Free Software 
+Foundation, either version 2 of the License, or (at your option) 
+any later version.
+
+ColorizationUsingOptimizationInPython is distributed in the hope 
+that it will be useful, but WITHOUT ANY WARRANTY; without even 
+he implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ColorizationUsingOptimizationInPython.  If not, see
+<http://www.gnu.org/licenses/>.
+'''
+
 import math
 import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import spsolve
+from scipy.sparse.linalg import lsqr
 
 from colorConversion import rgb2yiq, yiq2rgb
 
@@ -183,6 +205,9 @@ def getColorization(hasColor, luma, chromaI, chromaQ, neighbourRadius = 1):
   # solve system of linear equations
   result[:,:,1] = spsolve(A,bI).reshape(height,width)
   result[:,:,2] = spsolve(A,bQ).reshape(height,width)
+
+  #result[:,:,1] = lsqr(A,bI)[0].reshape(height,width)
+  #result[:,:,2] = lsqr(A,bQ)[0].reshape(height,width)
 
   # done, yay!
   return result
